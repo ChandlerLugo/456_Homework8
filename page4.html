@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Change Images</title>
+<style>
+    .container {
+        width: 100%;
+        max-width: 900px; 
+        text-align: center;
+        position: relative;
+        transform: translate(20%);
+        
+    }
+    .image {
+        display: none;
+        width: 100%;
+        height: auto;
+    }
+    
+    .container2 {
+        max-width: 1300px;
+        margin: 1 auto;
+        padding: 20px;
+        text-align: center;
+    }
+    .paragraph {
+        font-size: 16px; 
+        line-height: 1.5; 
+            color: #174700; 
+        margin-bottom: 20px; 
+        text-align: center;}  
+</style>
+</head>
+
+<body style="background-color: #d1ffc2;">
+
+<div class="container2">
+    <h1 style="color: #174700;"> Image Changing Button</h1>
+    <p class="paragraph" style="color: #174700;"> For this page, I created a button that changes the displayed photo and year in 
+        which the photo was taken. Using this method, we can see how stark and widespread the landscape changes 
+        in Frisco really are. These images show that the landscape in 2005, 2012, and 2018, consecutively. 
+    </p>
+
+</div>
+
+<div class="container" >
+    <img src="2005HMLayout.jpg" alt="2005" class="image" id="image1">
+    <img src="2012Layout.jpg" alt="2012" class="image" id="image2">
+    <img src="2018Layout.jpg" alt="2018" class="image" id="image3">
+    <div id="text"> Examining Landscape Changes with NAIP Imagery</div>
+    <button onclick="changeImage()">Click Me to Jump Through Time</button>
+</div>
+
+<script>
+    var currentImageIndex = 1;
+    var totalImages = 3;
+    var texts = ["2005", "2012", "2018"];
+
+    function changeImage() {
+        currentImageIndex = (currentImageIndex % totalImages) + 1;
+        var currentImage = document.getElementById("image" + currentImageIndex);
+        var previousImageIndex = currentImageIndex === 1 ? totalImages : currentImageIndex - 1;
+        var previousImage = document.getElementById("image" + previousImageIndex);
+
+        currentImage.style.display = "block";
+        previousImage.style.display = "none";
+
+        document.getElementById("text").innerText = texts[currentImageIndex - 1];
+    }
+</script>
+
+</body>
+</html>
