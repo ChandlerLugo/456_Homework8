@@ -1,62 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Slider with Opacity Control</title>
-<style>
-    .slider-container {
-        position: relative;
-        width: 100%;
-        max-width: 600px;
-        margin: auto;
-        overflow: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-    .slider {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
+    
+    <style>
+        img{
+            position: absolute;
+        }
+    </style>
 
-    .slider img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
+    <style>
+    
+        body {
+            background-color: #d1ffc2;
+            color: #174700; 
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;}
+    
+        .container {
+            max-width: 500px;
+            margin: 1 auto;
+            padding: 20px;
+            text-align: center;}
+        .paragraph {
+            font-size: 16px; 
+            line-height: 1.5; 
+            color: #174700; 
+            margin-bottom: 20px; 
+            text-align: center;}
+        
+        .label {  
+            background-color: #d1ffc2; 
+            color: #174700; 
+            font-size: 16px; 
+            border-radius: 3px;
+            padding-left: 60 ;}
+            
 
-    .slider img.active {
-        opacity: 1;
-    }
-</style>
+
+    </style>
 </head>
-<body>
-
-<div class="slider-container">
-    <div class="slider">
-        <img src="2005HMLayout.jpg" class="active">
-        <img src="2008HMLayout.jpg">
-        <img src="2012Layout.jpg">
-        <img src="2018Layout.jpg">
+    <div class= "paragraph">
+        <h1> Opacity Slider </h1>  
+      <p> For the second page of my Homework 8, I wanted to show the drastic change between the oldest and most
+        recent photos of downtown Frisco, Texas. These histogram matched images on top of each other emphasize 
+        how farm land was rapidly developed for commerical and housing uses. We can clearly see the negative relationship 
+        between population growth and space for agriculture. 
+      </p>
     </div>
-    <input type="range" min="0" max="100" value="0" id="opacityRange">
-</div>
+    </div>
+    <div class="label" id="slidername"> 2005   ➜   2018 </div>
+    <div class="container">
+      
 
-<script>
-    const images = document.querySelectorAll('.slider img');
-    const opacityRange = document.getElementById('opacityRange');
+        <input type="range" min="0" max="1" value="1" step=".01" orient="vertical" oninput='myFunction(this.value)' style="height:400px"/>
 
-    opacityRange.addEventListener('input', function() {
-        const opacityValue = this.value / 100;
-        images.forEach((img, index) => {
-            img.style.opacity = (index === images.length - 1) ? opacityValue : 1 - opacityValue;
-        });
-    });
-</script>
+        <img id="after" src="2005HMLayout.jpg" alt="" height="400px">
+        <img id='before' src="2018Layout.jpg" alt="" height="400px">
+        
+    </div>
 
-</body>
+    <script>
+        var before = document.getElementById('before')
+        function myFunction(value){
+            before.style.opacity = value
+            console.log(value)
+
+        }
+        </script>
+    
 </html>
